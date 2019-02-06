@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.accordion2 {
+  background-color: #eee;
+  color: rgb(21, 159, 194);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+
+
+
+
+.accordion3{
+
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 33%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+
+}
+.accordion2:hover {
+	background-color:#2a90bf;
+  opacity: 0.4;
+  color: black
+}
+
+
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+#idmenulateral{
+  width: 14%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 10;
+  height: 100%;
+}
+.clw{
+
+  width: 100%;
+  background-color: rgba(190, 199, 199, 0.13);
+  opacity: 0.4;
+  color: black;
+  text-align: center;
+  font-size: 17px;
+  height: 70px;;
+}
+
+#idpacpregvot{
+  position: absolute;
+  top: -3.8%;
+  left: 15%;
+  background-color: #444;
+  opacity: 0.6;
+  z-index: 12;
+  width: 83%;
+  height: 90%;;
+}
+
+
+
+#idpanelreferidos{
+
+  position: absolute;
+  top: 8%;
+  left: 15%;
+  background-color: rgb(197, 9, 9);
+  opacity: 0.6;
+  z-index: 12;
+  width: 83%;
+  height: 90%;;
+
+}
+
+
+
+
+
+.clpacpregvot {
+
+ color:#4794D3;
+ width:300px;
+ margin:90px auto;
+
+ -webkit-animation: flipinx 1s linear 2s 1 normal ;
+ animation: flipinx 1s linear 2s 1 normal ;
+}
+
+
+@-webkit-keyframes flipinx {
+  0%{
+	opacity: 0;
+	-webkit-transform: perspective(400px) rotateY(0deg);
+	transform: perspective(400px) rotateY(90deg);
+  }
+  40%{
+	-webkit-transform: perspective(400px) rotateY(0deg);
+	transform: perspective(400px) rotateY(-10deg);
+  }
+  70%{
+	-webkit-transform: perspective(400px) rotateY(0deg);
+	transform: perspective(400px) rotateY(10deg);
+  }
+  100%{
+	opacity: 1;
+	-webkit-transform: perspective(400px) rotateY(0deg);
+	transform: perspective(400px) rotateY(0deg);
+  }
+}
+
+@keyframes flipinx {
+  0%{
+	opacity: 0;
+	transform: perspective(400px) rotateY(90deg);
+  }
+  40%{
+	transform: perspective(400px) rotateY(-10deg);
+  }
+  70%{
+	transform: perspective(400px) rotateY(10deg);
+  }
+  100%{
+	opacity: 1;
+	transform: perspective(400px) rotateY(0deg);
+  }
+}
+
+
+.ideditexregvotan{
+  position: relative;
+  top:0px;
+  left: 15px;
+  height: 100%;
+  background-color: #2a90bf;
+  opacity: 7;
+  width: 80%;
+  font-size: 17px;
+  color: rgb(0, 0, 0)
+}
+
+
+.ideditexregvotanref{
+  position: relative;
+  top:0px;
+  left: 15px;
+
+  background-color: #e5e7e7;
+  opacity: 7;
+  width: 70%;
+  font-size: 17px;
+  color: rgb(0, 0, 0);
+  border: 5px double rgba(28,110,164,0.16);
+  color: #616161;
+background: #bababa;
+text-shadow: #e0e0e0 1px 1px 0;
+color: #050505;
+background: #bababa;
+
+}
+
+
+
+
+
+
+#idedtnm1{
+  position: relative;
+  top: 1%;
+  left: 3%;
+  width: 96%;
+
+}
+
+#iddiv1nam{
+  display: flex;
+  background-color: bisque;
+}
+
+
+#idpacpregvot3{
+
+  position: absolute;
+  top: 15.4%;
+  left: 50%;
+  background-color: rgb(226, 224, 224);
+  opacity: 0.6;
+  z-index: 12;
+  width: 20%;
+  height: 90%;;
+  z-index: 14;
+}
+
+#idbtfirebase{
+
+  -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	-webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+	background:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+	background-color:#33bdef;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #057fd0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+
+
+
+
+}
+
+
+
+#idmenuaddreferidos{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+  opacity: 0.7;
+  z-index: 15;
+}
+
+#idaddreferf{
+
+position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 35%;
+  height: 80%;
+  background-color: rgb(255, 255, 255);
+  opacity: 1;
+  z-index: 15;
+  overflow-y: scroll;
+
+}
+
+
+
+#myUL2{
+position: relative;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+
+}
+
+
+
+
+
+
+
+
+#iddbuscaref{
+
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 45%;
+  height: 100%;
+  background-color: rgb(158, 158, 158);
+  opacity: 1;
+  z-index: 15;
+  overflow-y: scroll;
+}
+
+
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+
+
+#idbtcerrarmodalregis{
+
+  position: absolute;
+  top:2%;
+  left: 90%;
+  z-index: 13;
+}
+
+
+
+#idbtregismodalregis{
+
+  position: absolute;
+  top:2%;
+  left:70%;
+  z-index: 13;
+
+}
+
+
+
+
+
+
+
+
+#divregrefder{
+
+
+}
+
+#divregrefder:hover {
+opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+<link rel="stylesheet" href="css/style.css">
+
+<script src="jquery-3.3.1.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDFr709BqeySGzt63KugXZ9cCpC-8V5qY4",
+    authDomain: "elecciones-b3e1c.firebaseapp.com",
+    databaseURL: "https://elecciones-b3e1c.firebaseio.com",
+    projectId: "elecciones-b3e1c",
+    storageBucket: "elecciones-b3e1c.appspot.com",
+    messagingSenderId: "177506121919"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+
+
+
+
+
+</head>
+<body>
+
+<div id="idpacpregvot" class="clpacpregvot" >
+
+  <div  class="accordion3" >
+    <div>
+
+        <label for="other">Primer Nombre</label>
+        <input class="ideditexregvotan" type="text" id="idedtnm1" placeholder="Primer Nombre"><br>
+        <label for="other">Segundo Nombre</label>
+        <input  class="ideditexregvotan" type="text" id="idedtnm2" placeholder="Segundo Nombre"><br>
+        <label for="other">Primer Apellido </label>
+        <input  class="ideditexregvotan" type="text" id="idedtap1" placeholder="Primer Apellido"> <br>
+        <label for="other">Segundo Apellido</label>
+        <input class="ideditexregvotan" type="text" id="idedtap2" placeholder="Segundo Apellido"> <br>
+        <label for="other">Cedula</label><br>
+        <input class="ideditexregvotan" type="text" id="idedtced" placeholder="Cedula">     <br>
+        <label for="other">Departamento</label>
+        <input class="ideditexregvotan" type="text" id="idedtdep" placeholder="Departamento"> <br>
+        <label for="other">Municipio</label><br>
+        <input class="ideditexregvotan" type="text" id="idedtmun" placeholder="Municipio">
+        <br>
+        <label for="other">Puesto</label><br>
+        <input class="ideditexregvotan" type="text" id="idedtpt" placeholder="Puesto">
+        <br>
+        <label for="other">Direccion</label><br>
+        <input class="ideditexregvotan" type="text" id="idedtdr" placeholder="Direccion">
+        <br>
+        <label for="other">Mesa</label><br>
+        <input class="ideditexregvotan" type="text" id="idedtmesa" placeholder="Mesa">
+        <br>
+        <label for="other">Fecha inscripcion cc</label>
+        <input class="ideditexregvotan" type="text" id="idedtfch" placeholder="Fecha de inscripcion">
+
+
+        <br>      <br>     
+        <label for="other">Celular</label> <br>
+        <input class="ideditexregvotan" type="text" id="idedtcelular" placeholder="Celular">
+        <br>
+        <label for="other">Email</label> <br>
+        <input class="ideditexregvotan" type="text" id="idedtemail" placeholder="Email">
+        <br>
+        <label for="other">Facesbook</label> <br>
+        <input class="ideditexregvotan" type="text" id="idedtfaces" placeholder="Facesbook">
+    </div>
+
+
+
+  </div>
+
+
+</div>
+
+
+<div id="idpacpregvot3" class="clpacpregvot2x" >
+
+  <div  class="accordion4" >
+    <div>
+        <br><br><br><br>
+        <label for="other">Referido</label>
+        <input class="ideditexregvotan" type="text" id="idedtreferido" placeholder="Referido"><br>
+        <label for="other">id Ref</label><br>
+        <input class="ideditexregvotan" type="text" id="idedtidreferido" placeholder="id"><br>
+
+
+
+        <label for="other">Nota al Usuario</label>
+        <input class="ideditexregvotan" type="text" id="idedtntusuario" placeholder="Nota al Usuario"><br>
+        <label for="other">Nota al Referido</label>
+        <input  class="ideditexregvotan" type="text" id="idedtntreferido" placeholder="Nota al referido"><br><br><br><br>
+        <button id="idbtfirebase" onclick="getvalores();" > Guardar votante </button>
+        <button id="idbtfirebase2" onclick="getvalores2();" > Guardar2 </button>
+        <button id="idbtfirebase3" onclick="limpia();" > Nuevo votante </button>
+    
+    </div>
+
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+<div id="idmenulateral" >
+<h2>ELECCIONES</h2>
+
+
+
+
+
+
+
+
+<button class="accordion">Registrar</button>
+<div class="panel">
+    <div class="accordion2" id="idbtregistrarvotantes" onclick="fregvotantes();"> registrar Votantes</div>
+    <div class="accordion2" id="idbtregistrarvotantes" onclick="fregvotantes();"> registrar Votantes</div>
+    <div class="accordion2" id="idbtregistrarvotantes" onclick="fregvotantes();"> registrar Votantes</div>
+    
+ </div>
+
+
+
+
+
+
+
+
+<button onclick="fsecc2();" class="accordion">Section 2</button>
+<div class="panel">
+
+    <div class="accordion2" id="iddivregistrarreferido" onclick="fabrirrreferidos();"> registrar Referidos</div>
+
+</div>
+
+<button class="accordion">Section 3</button>
+<div class="panel">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+</div>
+
+
+<div id="idpanelreferidos">
+
+<div id="idaddreferf" >
+
+
+
+  
+
+   <div  id="divregrefder"><h2> Registrar Referido</h2>
+      <br><br><br><br>
+     
+            <input class="ideditexregvotanref" type="text" id="idnrefnm"  placeholder="Nombre Completo" title="Nombre completo"><br><br>
+            <input class="ideditexregvotanref" type="text" id="idnreftecelu"  placeholder="Telefono Celular" title="Telefono Celular"><br>
+            <br>   <input class="ideditexregvotanref" type="text" id="idnreftecelu"  placeholder="Email" title="Email"><br><br>
+            <input class="ideditexregvotanref" type="text" id="idnreftedir"  placeholder="Direccion" title="Direccion"><br><br>
+            <input class="ideditexregvotanref" type="text" id="idnreftefaces"  placeholder="Facebook" title="Facebook"><br><br>
+            <input class="ideditexregvotanref" type="text" id="idnrefteCiudad"  placeholder="Ciudad" title="Ciudad"><br><br>
+    </div>
+      
+      
+
+
+
+
+
+
+
+  </div>
+<div id="iddbuscaref" >
+  
+
+  
+  <h2>Buscar referido</h2>
+
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+  
+  <ul id="myUL">
+   
+
+  </ul>
+  
+  <script>
+  function myFunction() {
+      var input, filter, ul, li, a, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+          } else {
+              li[i].style.display = "none";
+          }
+      }
+  }
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+</div>
+
+
+
+
+
+
+<script>
+ document.getElementById("idpacpregvot").style.display="none";
+
+ //document.getElementsByTagName('input');
+ //document.getElementById('nuip').value='1119886131';
+
+
+
+document.getElementById("idpacpregvot3").style.display="none";
+
+
+
+document.getElementById("idpanelreferidos").style.display="none";
+
+
+
+
+
+
+
+
+
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+
+
+
+function fregvotantes(){
+
+  //document.getElementById("idpacpregvot").classList.remove("clpacpregvot");
+
+ // document.getElementById("idpacpregvot").style.width=String(window.innerWidth*0.83)+"px";
+ document.getElementById("idpacpregvot").style.display="block";
+ 
+ document.getElementById("idpacpregvot").classList.add("clpacpregvot");
+ document.getElementById("idpacpregvot3").style.display="block";
+
+ document.getElementById("idpanelreferidos").style.display="none";
+
+
+}
+
+
+function  fsecc2(){  document.getElementById("idpacpregvot").classList.remove("clpacpregvot");
+
+  document.getElementById("idpacpregvot").style.display="none";
+
+  document.getElementById("idpacpregvot3").style.display="none";
+
+
+
+}
+
+
+
+function limpia(){
+
+
+  setval("idedtnm1");
+	setval("idedtnm2");
+	setval("idedtap1");
+  setval("idedtap2");
+  setval("idedtced");
+  setval("idedtdep");
+	setval("idedtmun");
+  setval("idedtpt");
+ nombre="";
+ setval("idedtdr");
+ setval("idedtmesa");
+ setval("idedtfch");
+ setval("idedtemail");
+ setval("idedtcelular");
+ setval("idedtfaces");
+ setval("idedtfch");
+ setval("idedtidreferido");
+ setval("idedtreferido");
+ setval("idedtntusuario");
+ setval("idedtntreferido");
+
+
+
+
+
+
+
+
+
+
+
+}
+function listo(){
+//	getvalores();
+	setTimeout(function(){
+	limpia();
+},200);
+}
+
+
+
+
+
+var  persona;
+	
+var nm1="";
+var nm2="";
+var ap1="";
+var ap2="";
+var cedula="";
+var dep="";
+var muni="";
+var puest="";
+var nombre=nm1+nm2+ap1+ap2;
+ var direcci="";
+ var mesa="";
+ var fecha="";
+ var email="";
+ var celular="";
+ var celular="";
+ var faces="";
+ var faces="";
+ var ntusuario="";
+ var ntreferido="";
+ var referido="";
+ var idref="";
+
+
+
+
+
+
+
+
+function getval(st){
+return	document.getElementById(st).value;
+}
+function setval(st){
+document.getElementById(st).value="";
+}
+
+
+
+
+
+
+function getvalores2(){
+
+   nm1="111";
+  nm2="1111";
+   ap1="1111";
+   ap2="111";
+  cedula="1111";
+ dep="11111";
+ muni="111111";
+nombre=nm1+nm2+ap1+ap2;
+  direcci="111";
+  mesa="111111";
+ fecha="1111111";
+ email="111111111";
+ celular="111111";
+   celular="1111";
+ faces="11111111";
+ faces="1111";
+  ntusuario="11111111";
+ ntreferido="11111";
+ referido="";
+ idref="111111";
+  
+  
+  
+llenaregistro();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getvalores(){
+ nm1=getval("idedtnm1");
+ nm2=getval("idedtnm2");
+ ap1=getval("idedtap1");
+ ap2=getval("idedtap2");
+ cedula=getval("idedtced");
+ dep=getval("idedtdep");
+ muni=getval("idedtmun");
+ puest=getval("idedtpt");
+ nombre=nm1+nm2+ap1+ap2;
+ direcci=getval("idedtdr");
+ mesa=getval("idedtmesa");
+  fecha=getval("idedtfch");
+email=getval("idedtemail");
+ celular=getval("idedtcelular");
+
+
+ faces=getval("idedtfaces");
+ ntusuario=getval("idedtntusuario");
+ ntreferido=getval("idedtntreferido");
+ referido=getval("idedtreferido");
+ idref=getval("idedtidreferido");
+llenaregistro();
+
+
+}
+
+
+
+
+
+function llenaregistro(){//nombre,cedula,dept,muni,puest,direcci,mesa, fecha,referido,emeail,faces,idref){
+persona={nombre:nombre,cedula:cedula,departamento:dep,municipio:muni,puesto:puest,
+direccion:direcci,mesa:mesa,fechainsc:fecha, referido:referido,movil:celular,email:email,facebook:faces,
+referido:referido,idreferido:idref,notauser:ntusuario,notareferido:ntreferido};
+firebase.database().ref().child("votantes").push(persona);
+listo();
+
+}
+
+var personaref="";
+
+function llenarreferido(){//nombre,cedula,dept,muni,puest,direcci,mesa, fecha,referido,emeail,faces,idref){
+personaref={nombre:nombre,cedula:cedula,departamento:dep,municipio:muni,puesto:puest,
+direccion:direcci,mesa:mesa,fechainsc:fecha, referido:referido,movil:celular,email:email,facebook:faces,referido:referido,idreferido:idref};
+firebase.database().ref().child("votantes").push(persona);
+}
+
+
+
+
+
+
+
+
+
+
+//
+var general;
+
+
+
+
+
+
+
+
+var nodehijo="referidos";
+var generalkey;
+traerdef(nodehijo);
+
+
+function traerdef(stnode){ 
+  firebase.database().ref().child(String(stnode)).
+  once('value').then(function(snapshot) {
+    var username = (snapshot.val() && snapshot.val().username) 
+    || 'Anonymous';  general=snapshot.val();//generalkey=snapshot.key;
+ generalkey=snapshot.key;
+    console.log("key "+snapshot+"       ln     "+general.length);
+    iteracrea();
+  });
+
+}
+
+
+
+
+
+
+
+
+
+var cambio=0;
+
+var varestructura1="";
+
+
+var solokeysnoticia=[];
+var  idkeysnoticias=0;
+
+function iteracrea(){
+
+
+varestructura1="";
+
+
+
+
+
+//, megusta:general[iter].likes
+//var mikey= Object.keys(general);
+
+
+/*
+for(var iter in general){
+solokeysnoticia.push({idk:idkeysnoticias, keyfire:mikey[idkeysnoticias]});
+console.log("mikey "+solokeysnoticia[idkeysnoticias].keyfire);
+idkeysnoticias=idkeysnoticias+1;
+}*/
+
+
+
+	for(var itera in general){
+
+//megusta:general[itera].likes
+
+
+varestructura1="<li><a   onclick="+'edit(this);'+"    id="+String(general[itera].id) +">"+String(general[itera].nm)+"</a></li>";
+
+
+
+//general[itera].likes
+
+
+$("#myUL").prepend(varestructura1);
+
+$('#myUL').click(function(){
+   // alert($(this).attr('id'));
+  })
+
+
+
+
+
+}
+
+
+}
+
+
+
+
+
+//general[itera].likes
+
+
+
+
+
+
+
+function edit(st){
+
+alert(st.innerText);
+document.getElementById('idedtreferido').value=st.innerText;
+document.getElementById('idedtidreferido').value=st.id;
+ document.getElementById("idmenuaddreferidos").style.display="none";
+}
+
+
+
+
+var ntnweref="";
+var nombrenuevref="";
+var idrefnuevo="";
+var nuerefecelular="";
+var nuevemail="";
+var nuevoface="";
+var dirnuevo="";
+function registrarnuevoreferido(){
+
+  var nuevoref={id:idrefnuevo,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,email:nuevemail,facebook:nuevoface, direccion:dirnuevo}
+  firebase.database.ref().child().push();
+}
+
+
+
+function cerrarmodalregisreferido(){
+  document.getElementById("idmenuaddreferidos").style.display="none";
+}
+
+function limpiarregistroreferido(){
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// seccion dos
+
+
+function  fabrirrreferidos(){
+
+  document.getElementById("idpacpregvot").style.display="none";
+  document.getElementById("idpacpregvot3").style.display="none";
+
+
+  document.getElementById("idpacpregvot").classList.remove("clpacpregvot");
+
+document.getElementById("idpanelreferidos").style.display="block";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script  src="js/index.js"></script>
+</body>
+</html>
