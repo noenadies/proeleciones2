@@ -395,7 +395,14 @@ opacity: 1;
 
 
 
+#idbtregiref{
 
+  position: absolute;
+  top: 3%;
+  left: 80%;
+background-color: rgb(84, 99, 94);
+border-radius: 50%;
+}
 
 
 
@@ -568,12 +575,14 @@ opacity: 1;
 
   
 
-   <div  id="divregrefder"><h2> Registrar Referido</h2>
-      <br><br><br><br>
-     
-            <input class="ideditexregvotanref" type="text" id="idnrefnm"  placeholder="Nombre Completo" title="Nombre completo"><br><br>
-            <input class="ideditexregvotanref" type="text" id="idnreftecelu"  placeholder="Telefono Celular" title="Telefono Celular"><br>
-            <br>   <input class="ideditexregvotanref" type="text" id="idnreftecelu"  placeholder="Email" title="Email"><br><br>
+   <div  id="divregrefder"><h2> Registrar Referido</h2> <button id="idbtregiref" onclick="registrarnuevoreferido();" >Guardar</button>
+      <br>
+      <input class="ideditexregvotanref" type="text" id="idnreftenota"  placeholder="Nota" title="Nota">
+      <br><br>      <input class="ideditexregvotanref" type="text" id="idnrefnm"  placeholder="Nombre Completo" title="Nombre completo"><br><br>
+            <input class="ideditexregvotanref" type="text" id="idnreftecelu"  placeholder="Telefono Celular" title="Telefono Celular">
+            
+            <br>
+            <br>   <input class="ideditexregvotanref" type="text" id="idnrefteEmai"  placeholder="Email" title="Email"><br><br>
             <input class="ideditexregvotanref" type="text" id="idnreftedir"  placeholder="Direccion" title="Direccion"><br><br>
             <input class="ideditexregvotanref" type="text" id="idnreftefaces"  placeholder="Facebook" title="Facebook"><br><br>
             <input class="ideditexregvotanref" type="text" id="idnrefteCiudad"  placeholder="Ciudad" title="Ciudad"><br><br>
@@ -925,6 +934,19 @@ function traerdef(stnode){
 
 }
 
+var nodenumreferid="numeroreferidos";
+var intnumreferido=0;
+function traenumreferidos(stnode){
+  firebase.database().ref().child(String(stnode)).
+  once('value').then(function(snapshot) {
+    var username = (snapshot.val() && snapshot.val().username) 
+    || 'Anonymous';
+    
+      intnumreferido=snapshot.val();
+      
+    
+  });
+}
 
 
 
@@ -1020,11 +1042,47 @@ var nuerefecelular="";
 var nuevemail="";
 var nuevoface="";
 var dirnuevo="";
+var nuevoref;
+function gv(st){
+return  document.getElementById(st).value;
+}
+
 function registrarnuevoreferido(){
 
-  var nuevoref={id:idrefnuevo,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,email:nuevemail,facebook:nuevoface, direccion:dirnuevo}
-  firebase.database.ref().child().push();
+
+
+  traenumreferidos("numeroreferidos");
+
+  
+ 
+ nombrenuevref=gv("idnrefnm");
+ntnweref=gv("idnreftenota");
+ nuerefecelular=gv("idnreftecelu");
+nuevemail=gv("idnrefteEmai");
+ nuevoface=gv("idnreftefaces");
+ dirnuevo=gv("idnreftedir");
+
+
+
+ nuevoref={id:intnumreferido,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,
+ email:nuevemail,facebook:nuevoface, direccion:dirnuevo}
+
+
+
+setTimeout(function(){ 
+
+  firebase.database().ref().child("referidos").push(nuevoref);
+  location.reload();
+  }, 1600);
+
+
 }
+
+
+
+
+
+
 
 
 
@@ -1051,13 +1109,15 @@ function limpiarregistroreferido(){
 
 function  fabrirrreferidos(){
 
-  document.getElementById("idpacpregvot").style.display="none";
-  document.getElementById("idpacpregvot3").style.display="none";
+document.getElementById("idpacpregvot").style.display="none";
+document.getElementById("idpacpregvot3").style.display="none";
 
 
-  document.getElementById("idpacpregvot").classList.remove("clpacpregvot");
+document.getElementById("idpacpregvot").classList.remove("clpacpregvot");
 
 document.getElementById("idpanelreferidos").style.display="block";
+
+
 }
 
 
