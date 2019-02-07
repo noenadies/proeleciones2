@@ -579,7 +579,10 @@ border-radius: 50%;
       <br>
       <input class="ideditexregvotanref" type="text" id="idnreftenota"  placeholder="Nota" title="Nota">
       <br><br>      <input class="ideditexregvotanref" type="text" id="idnrefnm"  placeholder="Nombre Completo" title="Nombre completo"><br><br>
-            <input class="ideditexregvotanref" type="text" id="idnreftecelu"  placeholder="Telefono Celular" title="Telefono Celular">
+      <input class="ideditexregvotanref" type="number" id="idnreftcedula"  placeholder="Cedula" title="Cedula">    
+      <br><br> 
+      
+      <input class="ideditexregvotanref" type="text" id="idnreftecelu"  placeholder="Telefono Celular" title="Telefono Celular">
             
             <br>
             <br>   <input class="ideditexregvotanref" type="text" id="idnrefteEmai"  placeholder="Email" title="Email"><br><br>
@@ -1031,6 +1034,9 @@ document.getElementById('idedtreferido').value=st.innerText;
 document.getElementById('idedtidreferido').value=st.id;
  document.getElementById("idpanelreferidos").style.display="none";
 
+
+ //idedtidreferido
+
  fregvotantes();
 }
 
@@ -1044,6 +1050,7 @@ var nuerefecelular="";
 var nuevemail="";
 var nuevoface="";
 var dirnuevo="";
+var nuevcedula=0;
 var nuevoref;
 function gv(st){
 return  document.getElementById(st).value;
@@ -1054,19 +1061,29 @@ function registrarnuevoreferido(){
 
 
   traenumreferidos("numeroreferidos");
-
+  nuevcedula=gv("idnreftcedula");
   
+
+for(var i in general){
+
+if(general[i].cedula==nuevcedula){
+
+alert("No se registro por ya existe un referido con esa  cedula");
+
+}
+
+else{
  
- nombrenuevref=gv("idnrefnm");
+  nombrenuevref=gv("idnrefnm");
 ntnweref=gv("idnreftenota");
  nuerefecelular=gv("idnreftecelu");
 nuevemail=gv("idnrefteEmai");
  nuevoface=gv("idnreftefaces");
  dirnuevo=gv("idnreftedir");
+ 
 
 
-
- nuevoref={id:intnumreferido,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,
+ nuevoref={cedula:nuevcedula,id:intnumreferido,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,
  email:nuevemail,facebook:nuevoface, direccion:dirnuevo}
 
 
@@ -1076,6 +1093,15 @@ setTimeout(function(){
   firebase.database().ref().child("referidos").push(nuevoref);
   location.reload();
   }, 1600);
+
+}
+
+}
+
+
+
+
+
 
 
 }
