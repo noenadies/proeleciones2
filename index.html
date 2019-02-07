@@ -438,13 +438,13 @@ text-align: center;
   position:  absolute;
   top: 5%;
   left: 30%;
-  width: 55px;
-  height:  55px;
+  width: 90px;
+  height:  90px;
 
 text-align: center;
   z-index: 16;
   color: #ffffff;
-
+background-color: #019ad2;
 }
 
 
@@ -482,7 +482,7 @@ text-align: center;
 
 
 <div id="idquepaso"><h3 id="idh3">registrando</h3>
-<button id="idbtquepasocerrar" onclick="fbtquepasocerrar();"></button>
+<button id="idbtquepasocerrar" onclick="fbtquepasocerrar();">ok</button>
 </div>
 
 
@@ -960,7 +960,7 @@ firebase.database().ref().child("votantes").push(persona);
 
 
 
-//
+// la varieble general es  elnodo d e referidos
 var general;
 
 
@@ -997,13 +997,26 @@ function traenumreferidos(stnode){
     
       intnumreferido=snapshot.val();
       
-    
+
   });
 }
 
+var unaves=0;
 
+firebase.database().ref().child("referidos").on("child_added", function(data, prevChildKey) {
+   //var newPlayer = data.val();
+   console.log("prevChildKey: " + prevChildKey);
+idrefnuevo=prevChildKey;
 
+console.log(idrefnuevo);try {
+  firebase.database().ref().child("referidos").child(String(idrefnuevo)).child("id").set(idrefnuevo);
+} catch (error) {
+  console.log(error.getval);
+}
 
+if(unaves>1){   firebase.database().ref().child("referidos").child(String(idrefnuevo)).child("id").set(idrefnuevo);}
+unaves=unaves+1;
+});
 
 
 
@@ -1144,50 +1157,28 @@ function registrarnuevoreferido(){
 
   traenumreferidos("numeroreferidos");
   try {
-    nuevcedulax=parseInt( gv("idnreftcedula"));
-    nuevcedula=gv("idnreftcedula");
+    nuevcedulax=(gv("idnreftcedula"))*0;
+   
+    nuevcedulax=(nuevcedulax+2.2)*0;
+   if(nuevcedulax===0){
+    try {
+    nuevcedula=gv("idnreftcedula");for(var i in general){
+if(general[i].cedula==nuevcedula){
+existe=true;fquepaso("existe","",1);
+}else{fquepaso("Guardado","",1);}}
+   } catch (error) {
+    fquepaso("la cedula no es un numero t","",1);
+   }
+   
+   
+   
 
+   }
+   
+   
+   
+   
 
-    for(var i in general){
-
-if(general[i].cedula!=nuevcedula){
-existe=true;
-/*
-  nombrenuevref=gv("idnrefnm");
-ntnweref=gv("idnreftenota");
- nuerefecelular=gv("idnreftecelu");
-nuevemail=gv("idnrefteEmai");
- nuevoface=gv("idnreftefaces");
- dirnuevo=gv("idnreftedir");
- 
-
-
- nuevoref={cedula:nuevcedula,id:intnumreferido,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,
- email:nuevemail,facebook:nuevoface, direccion:dirnuevo}
-
-
-
-setTimeout(function(){ 
-
-  firebase.database().ref().child("referidos").push(nuevoref);
-  location.reload();
-  }, 1600);
-
-alert("registrado");*/
-console.log("existe");
-fquepaso("no se registro por cedula repetida","",1);
-}
-
-else{
-  alert("No se registro por ya existe un referido con esa  cedula");
-  fquepaso("No se registro por ya existe un referido con esa  cedula","",1);
- 
-
-}
-
-
-
-}
 
 
 
@@ -1196,13 +1187,23 @@ else{
 
 
   } catch (error) {
-    alert("la cedula no es un numero ");
-    fquepaso("la cedula no es un numero ","",1);
+    
+    fquepaso("nan","",1);
+
+
+
+
+
+
+
+
+
+    
    // window.reload();
   }
 
   
-if(existe==false){ console.log("no existe");
+if(existe==false){ 
  regirefesi();
 
 }
@@ -1213,9 +1214,15 @@ if(existe==false){ console.log("no existe");
 
 
 }
-
-
+var nuevoref1;
 function regirefesi(){
+  
+
+if(nuevcedula!=0){traenumreferidos("numeroreferidos");
+
+nuevoref1=[];
+//setTimeout(function(){
+
   nombrenuevref=gv("idnrefnm");
 ntnweref=gv("idnreftenota");
  nuerefecelular=gv("idnreftecelu");
@@ -1224,25 +1231,52 @@ nuevemail=gv("idnrefteEmai");
  dirnuevo=gv("idnreftedir");
  
 
-
- nuevoref={cedula:nuevcedula,id:intnumreferido,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,
+ nuevoref1={cedula:nuevcedula,id:1,nm:nombrenuevref,notas:ntnweref, celular:nuerefecelular,
  email:nuevemail,facebook:nuevoface, direccion:dirnuevo}
 
 
 
-setTimeout(function(){ 
+  firebase.database().ref().child("numeroreferidos").set(intnumreferido+1);
+  firebase.database().ref().child("referidos").push(nuevoref1);
+//  location.reload();
+setTimeout(function(){
 
-  firebase.database().ref().child("referidos").push(nuevoref);
-  location.reload();
-  }, 1600);
+  try {
+    romoverfire();
+  } catch (error) {
+    
+  }
 
-alert("registrado");
+  try {
+    addrfire();romoverfire();
+  } catch (error) {
+    
+  }
+ 
+},100);
+
+  //addrfire();
+  //romoverfire();
+//},4000);
+
+
+}// fin de l if
+
+else{fquepaso("La cedula no es un numero ","",1)}
+
+
 }
 
 
+var a={b:1}
+function romoverfire(){
+  firebase.database().ref("referidos").child("a").remove();
 
-
-
+}
+function addrfire(){
+  firebase.database().ref().child("referidos").child("a").set(1);
+  //firebase.database().ref().child("referidos").push(a);
+}
 
 function cerrarmodalregisreferido(){
   document.getElementById("idmenuaddreferidos").style.display="none";
