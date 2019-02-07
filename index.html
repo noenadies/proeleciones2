@@ -433,7 +433,19 @@ text-align: center;
 
 
 
+#idbtquepasocerrar{
 
+  position:  absolute;
+  top: 5%;
+  left: 30%;
+  width: 55px;
+  height:  55px;
+
+text-align: center;
+  z-index: 16;
+  color: #ffffff;
+
+}
 
 
 </style>   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -469,7 +481,9 @@ text-align: center;
 
 
 
-<div id="idquepaso"><h3 id="idh3">registrando</h3></div>
+<div id="idquepaso"><h3 id="idh3">registrando</h3>
+<button id="idbtquepasocerrar" onclick="fbtquepasocerrar();"></button>
+</div>
 
 
 
@@ -1077,14 +1091,32 @@ fquepaso("Selecionado Referido",st.innerText);
 }
 
 
-function fquepaso(st,el){
+function fquepaso(st,el,esperar){
 
 
 document.getElementById("idquepaso").style.display="block";
 document.getElementById("idh3").innerHTML=st+"<br>"+el;
-setTimeout(function(){ document.getElementById("idquepaso").style.display="none";
+setTimeout(function(){
+  if(esperar==1){
+   
 document.getElementById("idh3").innerHTML=="";
+  }
+  else{
+
+    document.getElementById("idquepaso").style.display="none";
+document.getElementById("idh3").innerHTML=="";
+  }
+
 },1000);
+
+
+}
+
+
+
+function fbtquepasocerrar(){
+
+location.reload();
 
 
 }
@@ -1143,10 +1175,12 @@ setTimeout(function(){
 
 alert("registrado");*/
 console.log("existe");
+fquepaso("no se registro por cedula repetida","",1);
 }
 
 else{
   alert("No se registro por ya existe un referido con esa  cedula");
+  fquepaso("No se registro por ya existe un referido con esa  cedula","",1);
  
 
 }
@@ -1163,7 +1197,8 @@ else{
 
   } catch (error) {
     alert("la cedula no es un numero ");
-    window.reload();
+    fquepaso("la cedula no es un numero ","",1);
+   // window.reload();
   }
 
   
