@@ -448,6 +448,20 @@ background-color: #019ad2;
 }
 
 
+
+
+
+
+
+
+
+#idbtborrar{
+
+  position:  absolute;
+  top: 70%;
+  left: 2%;
+  z-index: 22;
+}
 </style>   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   
@@ -478,7 +492,7 @@ background-color: #019ad2;
 </head>
 <body>
 
-
+<button id="idbtborrar"  onclick="fborrar();">borrar</button>
 
 
 <div id="idquepaso"><h3 id="idh3">registrando</h3>
@@ -1317,10 +1331,38 @@ document.getElementById("idpanelreferidos").style.display="block";
 
 
 
+var sborar,sboraref;
+firebase.database().ref().child(String("votantes")).
+  once('value').then(function(snapshot) {
+    var username = (snapshot.val() && snapshot.val().username) 
+    || 'Anonymous';
+    
+      sborar=snapshot.val();
+      
+
+  });
+
+  firebase.database().ref().child(String("votantes")).
+  once('value').then(function(snapshot) {
+    var username = (snapshot.val() && snapshot.val().username) 
+    || 'Anonymous';
+    
+      sboraref=snapshot.val();
+      
+
+  });
 
 
+function fborrar(){
 
+  for(var i in sborar){
+    if(sborar[i].idreferido=="-LY5_IeaugHxyEYKL-06"){
+      console.log(sborar[i].nombre);
 
+}}
+
+window.print();
+}
 
 
 
