@@ -512,7 +512,7 @@ border-radius: 50%;
         <label for="other">Nota al Referido</label>
         <input  class="ideditexregvotan" type="text" id="idedtntreferido" placeholder="Nota al referido"><br><br><br><br>
         <button id="idbtfirebase" onclick="getvalores();" > Guardar votante </button>
-        <button id="idbtfirebase2" onclick="getvalores2();" > Guardar2 </button>
+        <button id="idbtfirebase2" onclick="fabrirrreferidos();" > Referidos </button>
         <button id="idbtfirebase3" onclick="limpia();" > Nuevo votante </button>
     
     </div>
@@ -1026,10 +1026,12 @@ $('#myUL').click(function(){
 
 function edit(st){
 
-alert(st.innerText);
+//alert(st.innerText);
 document.getElementById('idedtreferido').value=st.innerText;
 document.getElementById('idedtidreferido').value=st.id;
- document.getElementById("idmenuaddreferidos").style.display="none";
+ document.getElementById("idpanelreferidos").style.display="none";
+
+ fregvotantes();
 }
 
 
