@@ -47,7 +47,33 @@
   transition: 0.4s;
 
 }
-.accordion2:hover {
+
+
+
+
+.accordion4 {
+  background-color: #eee;
+  color: rgb(21, 159, 194);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+
+
+
+
+
+
+
+
+
+.accordion4:hover {
 	background-color:#2a90bf;
   opacity: 0.4;
   color: black
@@ -58,6 +84,28 @@
 .active, .accordion:hover {
   background-color: #ccc; 
 }
+
+
+
+.active, .accordion4:hover {
+  background-color: #ccc; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .panel {
   padding: 0 18px;
@@ -113,6 +161,18 @@
 }
 
 
+#idpanelbuscarvotantes{
+
+position: absolute;
+top: 8%;
+left: 15%;
+background-color: rgb(197, 9, 9);
+opacity: 0.6;
+z-index: 12;
+width: 83%;
+height: 90%;;
+
+}
 
 
 
@@ -291,6 +351,31 @@ position: absolute;
 
 
 
+#idaddvotante{
+
+position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 35%;
+  height: 80%;
+  background-color: rgb(255, 255, 255);
+  opacity: 1;
+  z-index: 15;
+  overflow-y: scroll;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 #myUL2{
 position: relative;
 top: 0;
@@ -319,6 +404,29 @@ height: 100%;
   z-index: 15;
   overflow-y: scroll;
 }
+
+
+
+#iddbusvotante{
+
+position: absolute;
+top: 0%;
+left: 15.1%;
+width: 45%;
+height: 100%;
+background-color: rgb(158, 158, 158);
+opacity: 1;
+z-index: 15;
+overflow-y: scroll;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -355,6 +463,49 @@ height: 100%;
 #myUL li a:hover:not(.header) {
   background-color: #eee;
 }
+
+
+
+
+
+
+
+
+#myInputvotantes {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myULvotantes {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+
+}
+
+#myULvotantes li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myULvotantes li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+
 
 
 
@@ -462,6 +613,23 @@ background-color: #019ad2;
   left: 2%;
   z-index: 22;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   
@@ -603,8 +771,7 @@ background-color: #019ad2;
 <button class="accordion">Registrar</button>
 <div class="panel">
     <div class="accordion2" id="idbtregistrarvotantes" onclick="fregvotantes();"> registrar Votantes</div>
-    <div class="accordion2" id="idbtregistrarvotantes" onclick="fregvotantes();"> registrar Votantes</div>
-    <div class="accordion2" id="idbtregistrarvotantes" onclick="fregvotantes();"> registrar Votantes</div>
+
     
  </div>
 
@@ -615,16 +782,18 @@ background-color: #019ad2;
 
 
 
-<button onclick="fsecc2();" class="accordion">Section 2</button>
+<button onclick="fsecc2();" class="accordion">Referidos</button>
 <div class="panel">
 
     <div class="accordion2" id="iddivregistrarreferido" onclick="fabrirrreferidos();"> registrar Referidos</div>
 
 </div>
 
-<button class="accordion">Section 3</button>
+<button class="accordion">Buscar Votantes</button>
 <div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <div class="accordion2" id="iddivregistrarreferido" onclick="fabrirbuscarvotante();"> Buscar Votantes</div>
+
 </div>
 </div>
 
@@ -712,6 +881,91 @@ background-color: #019ad2;
 
 
 
+
+
+
+
+
+
+<div id="idpanelbuscarvotantes" >
+
+
+
+  
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ <div id="iddbusvotante" >
+   
+ 
+   
+   <h2>Buscar Votante</h2>
+ 
+   <input type="text" id="myInputvotantes" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+   
+   <ul id="myULvotantes">
+    
+ 
+   </ul>
+   
+   <script>
+   function myFunction() {
+       var input, filter, ul, li, a, i, txtValue;
+       input = document.getElementById("myInput");
+       filter = input.value.toUpperCase();
+       ul = document.getElementById("myUL");
+       li = ul.getElementsByTagName("li");
+       for (i = 0; i < li.length; i++) {
+           a = li[i].getElementsByTagName("a")[0];
+           txtValue = a.textContent || a.innerText;
+           if (txtValue.toUpperCase().indexOf(filter) > -1) {
+               li[i].style.display = "";
+           } else {
+               li[i].style.display = "none";
+           }
+       }
+   }
+   </script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ </div>
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
  document.getElementById("idpacpregvot").style.display="none";
 
@@ -729,7 +983,7 @@ document.getElementById("idpanelreferidos").style.display="none";
 document.getElementById("idquepaso").style.display="none";
 
 
-
+document.getElementById("idpanelbuscarvotantes").style.display="none";
 
 
 
@@ -766,7 +1020,9 @@ function fregvotantes(){
  document.getElementById("idpacpregvot3").style.display="block";
 
  document.getElementById("idpanelreferidos").style.display="none";
-
+ //document.getElementById("iddbusvotante").style.display="none";
+ 
+ document.getElementById("idpanelbuscarvotantes").style.display="none";
 
 }
 
@@ -1096,6 +1352,53 @@ $('#myUL').click(function(){
 
 
 
+var varestructraevotantes="";
+var vtraevotantes;
+function traevotantes(){
+
+
+varestructraevotantes="";
+
+
+	for(var itera in vtraevotantes){
+
+//megusta:general[itera].likes
+
+
+varestructraevotantes="<li><a   onclick="+'edit(this);'+"    id="+String(vtraevotantes[itera].id) +">"+
+String(vtraevotantes[itera].nombre)+
+"</a></li>";
+
+
+
+//general[itera].likes
+
+
+$("#myUL").prepend(varestructura1);
+
+$('#myUL').click(function(){
+   // alert($(this).attr('id'));
+  })
+
+
+
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 //general[itera].likes
 
 
@@ -1322,9 +1625,31 @@ document.getElementById("idpacpregvot3").style.display="none";
 document.getElementById("idpacpregvot").classList.remove("clpacpregvot");
 
 document.getElementById("idpanelreferidos").style.display="block";
+document.getElementById("idpanelbuscarvotantes").style.display="none";
+
+}
+
+
+
+function  fabrirbuscarvotante(){
+
+document.getElementById("idpacpregvot").style.display="none";
+document.getElementById("idpacpregvot3").style.display="none";
+
+
+document.getElementById("idpacpregvot").classList.remove("clpacpregvot");
+
+document.getElementById("idpanelreferidos").style.display="none";
+document.getElementById("idpanelbuscarvotantes").style.display="block";
 
 
 }
+
+
+
+
+
+
 
 
 
