@@ -715,6 +715,10 @@ background-color: #019ad2;
         <br>
         <label for="other">Facesbook</label> <br>
         <input class="ideditexregvotan" type="text" id="idedtfaces" placeholder="Facesbook">
+        <br>
+        <input class="ideditexregvotan" type="text" id="idlng" placeholder="lng">
+        <br>
+        <input class="ideditexregvotan" type="text" id="idlat" placeholder="lat">
     </div>
 
 
@@ -1072,7 +1076,8 @@ function limpia(){
  setval("idedtntreferido");
 
 
-
+ setval("idlat");
+ setval("idlng");
 
 
 
@@ -1116,7 +1121,8 @@ var nombre=nm1+nm2+ap1+ap2;
  var ntreferido="";
  var referido="";
  var idref="";
-
+var vlat="";
+var vlng="";
 
 
 
@@ -1196,7 +1202,8 @@ function getvalores(){
   fecha=getval("idedtfch");
 email=getval("idedtemail");
  celular=getval("idedtcelular");
-
+vlat=getval("idlat");
+vlng=getval("idlng");
 
  faces=getval("idedtfaces");
  ntusuario=getval("idedtntusuario");
@@ -1210,15 +1217,19 @@ llenaregistro();
 
 
 
-
+var objplazalatlng;
 
 function llenaregistro(){//nombre,cedula,dept,muni,puest,direcci,mesa, fecha,referido,emeail,faces,idref){
 persona={nombre:nombre,cedula:cedula,departamento:dep,municipio:muni,puesto:puest,
 direccion:direcci,mesa:mesa,fechainsc:fecha, referido:referido,movil:celular,email:email,facebook:faces,
-referido:referido,idreferido:idref,notauser:ntusuario,notareferido:ntreferido};
+referido:referido,idreferido:idref,notauser:ntusuario,notareferido:ntreferido,lat:vlat,lng:vlng};
 firebase.database().ref().child("votantes").push(persona);
 
 firebase.database().ref().child("telefonos").push(String(celular));
+ objplazalatlng={direccion:direcci,lat:vlat,lng:vlng}
+firebase.database().ref().child("plazaslatlng").push(objplazalatlng);
+
+
 listo();
 
 }
