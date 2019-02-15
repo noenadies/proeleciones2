@@ -3,6 +3,79 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+
+
+
+
+
+
+
+
+
+
+#myInputbuscvotante {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTablebuscvotante {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTablebuscvotante th, #myTablebuscvotante td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTablebuscvotante tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTablebuscvotante tr.header, #myTablebuscvotante tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .accordion {
   background-color: #eee;
   color: #444;
@@ -619,6 +692,23 @@ background-color: #019ad2;
 
 
 
+#idbuscarvotantes{
+  position: absolute;
+  top: 8.8%;
+  left:15.1%;
+  z-index: 200;
+  background-color: rgb(185, 190, 190);
+  opacity: 0.95;
+  width: 83%;
+  height: 90%;
+  overflow-y: scroll;
+}
+
+
+
+
+
+
 
 
 
@@ -659,6 +749,160 @@ background-color: #019ad2;
 
 </head>
 <body>
+
+  <div id="idbuscarvotantes">
+
+
+
+      <h2>My Customers</h2>
+
+      <input type="text" id="myInputbuscvotante" onkeyup="myFunctionbuscvotante()" placeholder="Search for names.." title="Type in a name">
+      
+      <table id="myTablebuscvotante">
+        <tr class="header">
+          <th style="width:14.285714285714300%;">nombre</th>
+          <th style="width:14.285714285714300%;">cedula</th>
+          <th style="width:14.285714285714300%;">telefono</th>
+          <th style="width:14.285714285714300%;">puesto</th>
+          <th style="width:14.285714285714300%;">direccion</th>
+          <th style="width:14.285714285714300%;">mesa</th>
+          <th style="width:14.285714285714300%;">referido</th>
+
+         
+          
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>Berglunds snabbkop</td>
+          <td>Sweden</td>
+        </tr>
+        <tr>
+          <td>Island Trading</td>
+          <td>UK</td>
+        </tr>
+        <tr>
+          <td>Koniglich Essen</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>Laughing Bacchus Winecellars</td>
+          <td>Canada</td>
+        </tr>
+        <tr>
+          <td>Magazzini Alimentari Riuniti</td>
+          <td>Italy</td>
+        </tr>
+        <tr>
+          <td>North/South</td>
+          <td>UK</td>
+        </tr>
+        <tr>
+          <td>Paris specialites</td>
+          <td>France</td>
+        </tr>
+
+         
+          
+      </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Berglunds snabbkop</td>
+        <td>Sweden</td>
+      </tr>
+      <tr>
+        <td>Island Trading</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Koniglich Essen</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Laughing Bacchus Winecellars</td>
+        <td>Canada</td>
+      </tr>
+      <tr>
+        <td>Magazzini Alimentari Riuniti</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <td>North/South</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Paris specialites</td>
+        <td>France</td>
+      </tr>
+
+
+
+
+      </table>
+      
+      <script>
+      function myFunctionbuscvotante() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInputbuscvotante");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTablebuscvotante");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      </script>
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <button id="idbtborrar"  onclick="fborrar();">borrar</button>
 
